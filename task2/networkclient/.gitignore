@@ -1,4 +1,4 @@
 classes/**
 .DS_store?**
 *.classes
-target/**
+*/target/**
