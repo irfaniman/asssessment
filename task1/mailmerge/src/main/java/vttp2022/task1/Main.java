@@ -7,24 +7,40 @@ import java.io.Reader;
 
 public class Main {
 
-    /*public static void main(String[] args) 
+    public static void main(String[] args) 
             throws IOException {
 
-        String dataFile = args[0];
+        String csv = args[0]; //for inputting csv file
+        String template = args[1]; //for inputting template file
 
-        //ExamReporter reporter = new ExamReporter();
+        TourPackages packages = new TourPackages();
+        Address thankYou = new Address();
 
-        Reader r = new FileReader(dataFile);
-        BufferedReader br = new BufferedReader(r);
+        Reader rcsv = new FileReader(csv);
+        BufferedReader brcsv = new BufferedReader(rcsv);
+
+        Reader rtemp = new FileReader(template);
+        BufferedReader brtemp = new BufferedReader(rtemp);
+
 
         // Remove the first line
-        String data = br.readLine();
+        String datacsv = brcsv.readLine();
 
-        while (null != data) {
-            data = br.readLine();
-            reporter.read(data);
+        //Remove the first line
+        String datatemp = brtemp.readLine();
+
+        while (null != datacsv) {
+            datacsv = brcsv.readLine();
+            packages.read(datacsv);
         }
 
-        reporter.generateReport();
-    } */
+        packages.generateReport();
+
+        while (null != datatemp) {
+            datatemp = brtemp.readLine();
+            thankYou.read(datatemp);
+        }
+
+        thankYou.generateReport();
+    } 
 } 
